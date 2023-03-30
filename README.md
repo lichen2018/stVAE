@@ -32,7 +32,7 @@ get_cell_type_profile(sc_adata, st_adata, mu_expr_file='mu_gene_expression.csv',
 ```
 #### Description
   ```
-  Calculate cell-type specific mean expression of genes and gene-specific dispersion parameters, generate processed single cell data and annotations used to             construct pseudo spots, and generate processed spatial transcriptomic data.
+  Calculate cell-type specific mean expression of genes and gene-specific dispersion parameters, generate processed single cell data and annotations used to construct pseudo spots, and generate processed spatial transcriptomic data.
   ```
 #### Parameters  
   ```
