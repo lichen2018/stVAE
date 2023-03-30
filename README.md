@@ -3,7 +3,7 @@ stVAE, a method based on the variational autoencoder framework to deconvolve the
 
 ## Table of Contents
 1. [Installation](#installation)
-2. [stVAE usage](#stVAE-usage)
+2. [API](#api)
 3. [Example workflow](#example-workflow)
 ## Installation
 ### Requirements
