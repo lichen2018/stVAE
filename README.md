@@ -141,8 +141,10 @@ from stVAE import get_cell_type_profile
 from stVAE import generate_train_valid_batches
 from stVAE import train_stVAE, train_stVAE_with_pseudo_data
 
-sc_file = 'sc_1460.h5ad'
-st_file = 'st_1460.h5ad'
+sc_file = 'sc_1857.h5ad'
+st_file = 'st_1857.h5ad'
+st_adata=anndata.read_h5ad(st_file)
+sc_adata=anndata.read_h5ad(sc_file)
 ```
 
 ### Calulate the cell-type specific mean expression level of genes and gene-specific dispersion parameters
@@ -155,13 +157,9 @@ get_cell_type_profile(sc_adata, st_adata)
 model, cell_type_list = train_stVAE()
 ```
 
-### Generate the training and validation batches of pseudo spots.
-```python
-generate_train_valid_batches()
-```
-
 ### Train stVAE with pseudo spots and spatial transcriptomics (option)
 ```python
+generate_train_valid_batches()
 model, cell_type_list = train_stVAE_with_pseudo_data()
 ```
 
