@@ -145,8 +145,8 @@ from stVAE import get_cell_type_profile
 from stVAE import generate_train_valid_batches
 from stVAE import train_stVAE, train_stVAE_with_pseudo_data
 
-sc_file = 'stVAE data/mouse brain/Stereo-seq/sc_1857.h5ad'
-st_file = 'stVAE data/mouse brain/Stereo-seq/st_1857.h5ad'
+sc_file = './stVAE data/mouse brain/Stereo-seq/sc_1857.h5ad'
+st_file = './stVAE data/mouse brain/Stereo-seq/st_1857.h5ad'
 st_adata=anndata.read_h5ad(st_file)
 sc_adata=anndata.read_h5ad(sc_file)
 ```
