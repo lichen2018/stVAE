@@ -4,7 +4,8 @@ stVAE, a method based on the variational autoencoder framework to deconvolve the
 ## Table of Contents
 1. [Installation](#installation)
 2. [API](#api)
-3. [Example workflow](#example-workflow)
+3. [Data](#data)
+4. [Example workflow](#example-workflow)
 ## Installation
 ### Requirements
 - Python packages(3.8+)
@@ -133,6 +134,9 @@ get_proportions(model, cell_type_list, spatial_data_file='stRNA.csv')
   Inferred cell type proportions of spots
   ```
 
+## Data
+All propcessed data could be downloaded from the shared link: https://drive.google.com/drive/folders/11djR7vxr6Y1VTpz2EVJKH3MvJNGm9VoR?usp=share_link  
+
 ## Example workflow
 ### Import function and datasets
 ```python
@@ -141,8 +145,8 @@ from stVAE import get_cell_type_profile
 from stVAE import generate_train_valid_batches
 from stVAE import train_stVAE, train_stVAE_with_pseudo_data
 
-sc_file = 'sc_1857.h5ad'
-st_file = 'st_1857.h5ad'
+sc_file = 'stVAE data/mouse brain/Stereo-seq/sc_1857.h5ad'
+st_file = 'stVAE data/mouse brain/Stereo-seq/st_1857.h5ad'
 st_adata=anndata.read_h5ad(st_file)
 sc_adata=anndata.read_h5ad(sc_file)
 ```
