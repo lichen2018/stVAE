@@ -9,13 +9,13 @@ stVAE, a method based on the variational autoencoder framework to deconvolve the
 ## Installation
 ### Requirements
 - Python packages(3.8+)
-  - scvi(0.16.1)
-  - torch(1.11.0)
-  - scanpy(1.9.1)
-  - numpy(1.22.0)
-  - scipy(1.10.0)
-  - anndata(0.7.5)
-  - sparsemax(0.1.9)
+  - scvi (0.16.1)
+  - torch (1.11.0)
+  - scanpy (1.9.1)
+  - numpy (1.22.0)
+  - scipy (1.10.0)
+  - anndata (0.7.5)
+  - sparsemax (0.1.9)
 
 
 ### Install stVAE
