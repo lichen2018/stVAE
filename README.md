@@ -8,7 +8,7 @@ stVAE, a method based on the variational autoencoder framework to deconvolve the
 4. [Example workflow](#example-workflow)
 ## Installation
 ### Requirements
-- Python packages(3.8+)
+- Python packages (3.8+)
   - scvi (0.16.1)
   - torch (1.11.0)
   - scanpy (1.9.1)
