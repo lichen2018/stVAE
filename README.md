@@ -143,7 +143,7 @@ All propcessed data could be downloaded from the shared link: https://drive.goog
 import anndata
 from stVAE import get_cell_type_profile
 from stVAE import generate_train_valid_batches
-from stVAE import train_stVAE, train_stVAE_with_pseudo_data
+from stVAE import train_stVAE, train_stVAE_with_pseudo_data, get_proportions
 
 sc_file = './stVAE data/mouse brain/Stereo-seq/sc_1857.h5ad'
 st_file = './stVAE data/mouse brain/Stereo-seq/st_1857.h5ad'
