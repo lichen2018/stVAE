@@ -115,6 +115,24 @@ train_stVAE_with_pseudo_data(spatial_data_file='stRNA.csv', pseudo_data_fold='./
   the trained model and the list of cell types
   ```
 
+### Get trained stVAE model
+```python
+get_trained_stVAE(mu_expr_file='mu_gene_expression.csv', weight_file = 'model_weight.pkl')
+```
+#### Description
+  ```
+  Get the trained stVAE model.
+  ```
+#### Parameters  
+  ``` 
+  mu_expr_file          file saved cell-type specific mean exrepssion of genes.
+  weight_file           file saved stVAE model weights.
+  ```
+#### Return 
+  ```
+  the trained model and the list of cell types
+  ```
+
 ### Infer cell type proportions of spots
 ```python
 get_proportions(model, cell_type_list, spatial_data_file='stRNA.csv')
