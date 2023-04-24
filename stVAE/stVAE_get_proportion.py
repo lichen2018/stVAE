@@ -155,13 +155,16 @@ def loss_function_st(pred_ys, xs, mu, log_var, umi_counts, mu_expr, px_r, scale,
     return {'loss': loss, 'likelihood_loss':likelihood_loss.detach(), 'KLD':-kld_loss.detach()}
 
 
-def get_stVAE(mu_expr_file):
-    mu_expr = pd.read_csv(mu_expr_file, delimiter = ',', header = 0, index_col = 0).values.astype(np.float32)
+def get_trained_stVAE(mu_expr_file='mu_gene_expression.csv', weight_file = 'model_weight.pkl'):
+    mu_expr_df = pd.read_csv(mu_expr_file, delimiter = ',', header = 0, index_col = 0)
+    cell_type_list = list(mu_expr_df.index)
+    mu_expr = mu_expr_df.values.astype(np.float32)
     n_class = mu_expr.shape[0]
     feature_num = mu_expr.shape[1]
 
     model = ST_Vae(feature_num, n_class, n_layers = 3, n_latent = 128)
-    return model 
+    model.load_state_dict(torch.load(weight_file))
+    return model, cell_type_list 
 
 
 def train_stVAE(spatial_data_file='stRNA.csv', mu_expr_file='mu_gene_expression.csv', disper_file='disp_gene_expression.csv', n_epochs=2000, save_weight=True, load_weight=False):
