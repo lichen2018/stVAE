@@ -13,8 +13,9 @@ stVAE, a method based on the variational autoencoder framework to deconvolve the
   - torch (1.11.0)
   - scanpy (1.9.1)
   - numpy (1.22.0)
+  - pandas (1.4.2)
   - scipy (1.10.0)
-  - anndata (0.7.5)
+  - anndata (0.8.0)
   - sparsemax (0.1.9)
 
 
