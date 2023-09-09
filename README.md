@@ -115,7 +115,8 @@ train_stVAE_with_pseudo_data(spatial_data_file='stRNA.csv', pseudo_data_fold='./
   ```
 #### Return 
   ```
-  the trained model and the list of cell types
+  model                 the trained model
+  cell_type_list        list of cell types
   ```
 
 ### Get trained stVAE model
@@ -133,7 +134,8 @@ get_trained_stVAE(mu_expr_file='mu_gene_expression.csv', weight_file = 'model_we
   ```
 #### Return 
   ```
-  the trained model and the list of cell types
+  model                 the trained model
+  cell_type_list        list of cell types
   ```
 
 ### Infer cell type proportions of spots
