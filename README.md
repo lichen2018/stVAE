@@ -66,9 +66,6 @@ generate_train_valid_batches(scRNA_file='scRNA.csv', scRNA_label_file='scRNA_lab
   scRNA_label_file      file used to save annotation information of single cell data.
   pseudo_data_fold      file fold stored the training and validation batches of pseudo spots.  
   ```
-#### Return 
-  ```
-  ```
 
 
 ### Train stVAE
