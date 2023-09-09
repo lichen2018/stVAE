@@ -30,7 +30,7 @@ python3 setup.py install
 ## API
 ### Preprocess data
 ```python
-sc_mu_expr, sc_disp_expr, scRNA_data, scRNA_label, stRNA_data = get_cell_type_profile(sc_adata, st_adata, mu_expr_file='mu_gene_expression.csv', disper_file='disp_gene_expression.csv', scRNA_data_file='scRNA.csv', scRNA_label_file='scRNA_label.csv', spatial_data_file='stRNA.csv', n_epochs=250)
+get_cell_type_profile(sc_adata, st_adata, mu_expr_file='mu_gene_expression.csv', disper_file='disp_gene_expression.csv', scRNA_data_file='scRNA.csv', scRNA_label_file='scRNA_label.csv', spatial_data_file='stRNA.csv', n_epochs=250)
 ```
 #### Description
   ```
@@ -174,7 +174,7 @@ sc_adata=anndata.read_h5ad(sc_file)
 
 ### Calulate the cell-type specific mean expression level of genes and gene-specific dispersion parameters
 ```python
-get_cell_type_profile(sc_adata, st_adata)
+sc_mu_expr, sc_disp_expr, scRNA_data, scRNA_label, stRNA_data = get_cell_type_profile(sc_adata, st_adata)
 ```
 
 ### Train stVAE with spatial transcriptomics
