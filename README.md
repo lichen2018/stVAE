@@ -30,7 +30,7 @@ python3 setup.py install
 ## API
 ### Preprocess data
 ```python
-get_cell_type_profile(sc_adata, st_adata, mu_expr_file='mu_gene_expression.csv', disper_file='disp_gene_expression.csv', scRNA_data_file='scRNA.csv', scRNA_label_file='scRNA_label.csv', spatial_data_file='stRNA.csv', n_epochs=250)
+sc_mu_expr, sc_disp_expr, scRNA_data, scRNA_label, stRNA_data = get_cell_type_profile(sc_adata, st_adata, mu_expr_file='mu_gene_expression.csv', disper_file='disp_gene_expression.csv', scRNA_data_file='scRNA.csv', scRNA_label_file='scRNA_label.csv', spatial_data_file='stRNA.csv', n_epochs=250)
 ```
 #### Description
   ```
@@ -49,6 +49,11 @@ get_cell_type_profile(sc_adata, st_adata, mu_expr_file='mu_gene_expression.csv',
   ```
 #### Return 
   ```
+  sc_mu_expr            cell-type specific mean exrepssion of genes.
+  sc_disp_expr          gene dispersion
+  scRNA_data            processed single cell data
+  scRNA_label           annotation information of single cell data
+  stRNA_data            processed spatial transcriptomics
   ```
 
 ### Generate the training and validation batches of pseudo spots
