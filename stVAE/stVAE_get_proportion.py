@@ -20,6 +20,7 @@ from torch.autograd import Variable
 from torch.distributions import NegativeBinomial
 from sparsemax import Sparsemax
 import os
+torch.manual_seed(0)
 
 
 
@@ -514,6 +515,7 @@ def get_proportions(model, cell_type_list, spatial_data_file='stRNA.csv'):
     ----------
         Inferred cell type proportions of spots   
     """
+    model.eval()
 
     st_data_df = pd.read_csv(spatial_data_file, delimiter=',', header=0, index_col=0)
     st_data = st_data_df.values.astype(np.float32)
