@@ -193,7 +193,7 @@ def train_stVAE(spatial_data_file='stRNA.csv', mu_expr_file='mu_gene_expression.
 
 
     st_data_df = pd.read_csv(spatial_data_file, delimiter=',', header=0, index_col=0)
-    st_data = st_data_df.values.astype(np.float32)
+    st_data = torch.tensor(st_data_df.values.astype(np.float32))
 
 
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -217,6 +217,8 @@ def train_stVAE(spatial_data_file='stRNA.csv', mu_expr_file='mu_gene_expression.
     if use_cuda:
         model.cuda()
         mu_expr = mu_expr.to(device)
+        disper = disper.to(device)
+        st_data = st_data.to(device)
 
     train_result_log = 'train_result_log.txt'
     
@@ -240,17 +242,10 @@ def train_stVAE(spatial_data_file='stRNA.csv', mu_expr_file='mu_gene_expression.
             if i < int(st_data.shape[0]/120):
                 jdx = i*120
                 data_arr = st_data[jdx:jdx+120,:]
-                umi_counts = torch.tensor(data_arr.astype(np.float32))
-                umi_counts = umi_counts[umi_counts.sum(dim=1) != 0]
-                if umi_counts.nelement() == 0:
-                    continue
+                umi_counts = data_arr
                 xs = umi_counts
                 batch_size_tmp = xs.shape[0]
                 sc_px_r = disper.repeat(batch_size_tmp, 1)
-                if use_cuda:
-                    xs = xs.to(device)
-                    umi_counts = umi_counts.to(device)
-                    sc_px_r = sc_px_r.to(device)
                 # zero the parameter gradients
                 optimizer.zero_grad()
                 # forward + backward + optimize
