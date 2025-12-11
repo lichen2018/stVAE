@@ -75,9 +75,9 @@ def get_cell_type_profile(sc_adata, st_adata, mu_expr_file='mu_gene_expression.c
 
     pd.DataFrame.from_dict(label_dict).to_csv(scRNA_label_file)
 
-    pd.DataFrame(data=sc_adata[:,common_gene_lst].X.A, columns=common_gene_lst, index=sc_adata.obs_names).to_csv(scRNA_data_file)
-    pd.DataFrame(data=st_adata[:,common_gene_lst].X.A, columns=common_gene_lst, index=st_adata.obs_names ).to_csv(spatial_data_file)
-    scRNA_data = pd.DataFrame(data=sc_adata[:,common_gene_lst].X.A, columns=common_gene_lst, index=sc_adata.obs_names)
-    scRNA_label = pd.DataFrame.from_dict(label_dict)
-    stRNA_data = pd.DataFrame(data=st_adata[:,common_gene_lst].X.A, columns=common_gene_lst, index=st_adata.obs_names )
-    return sc_mu_expr, sc_disp_expr, scRNA_data, scRNA_label, stRNA_data
+    #pd.DataFrame(data=sc_adata[:,common_gene_lst].X.A, columns=common_gene_lst, index=sc_adata.obs_names).to_csv(scRNA_data_file)
+    #pd.DataFrame(data=st_adata[:,common_gene_lst].X.A, columns=common_gene_lst, index=st_adata.obs_names ).to_csv(spatial_data_file)
+    #scRNA_data = pd.DataFrame(data=sc_adata[:,common_gene_lst].X.A, columns=common_gene_lst, index=sc_adata.obs_names)
+    #scRNA_label = pd.DataFrame.from_dict(label_dict)
+    #stRNA_data = pd.DataFrame(data=st_adata[:,common_gene_lst].X.A, columns=common_gene_lst, index=st_adata.obs_names )
+    return sc_mu_expr, sc_disp_expr#, scRNA_data, scRNA_label, stRNA_data
