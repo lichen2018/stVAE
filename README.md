@@ -47,14 +47,7 @@ get_cell_type_profile(sc_adata, st_adata, mu_expr_file='mu_gene_expression.csv',
   spatial_data_file     file used to save processed spatial transcriptomics.
   n_epochs              number of epochs to esimate cell-type specific mean expression and dispersion parameters of genes.
   ```
-#### Return 
-  ```
-  sc_mu_expr            cell-type specific mean exrepssion of genes.
-  sc_disp_expr          gene dispersion
-  scRNA_data            processed single cell data
-  scRNA_label           annotation information of single cell data
-  stRNA_data            processed spatial transcriptomics
-  ```
+
 
 ### Generate the training and validation batches of pseudo spots
 
@@ -75,7 +68,7 @@ generate_train_valid_batches(scRNA_file='scRNA.csv', scRNA_label_file='scRNA_lab
 
 ### Train stVAE
 ```python
-train_stVAE(spatial_data_file='stRNA.csv', mu_expr_file='mu_gene_expression.csv', disper_file='disp_gene_expression.csv', n_epochs=2000, save_weight=True, load_weight=False)
+train_stVAE(spatial_data_file, mu_expr_file='mu_gene_expression.csv', disper_file='disp_gene_expression.csv', n_epochs=2000, save_weight=True, load_weight=False)
 ```
 #### Description
   ```
@@ -97,7 +90,7 @@ train_stVAE(spatial_data_file='stRNA.csv', mu_expr_file='mu_gene_expression.csv'
 
 ### Train stVAE with pseudo data
 ```python
-train_stVAE_with_pseudo_data(spatial_data_file='stRNA.csv', pseudo_data_fold='./batch_data/', mu_expr_file='mu_gene_expression.csv', disper_file='disp_gene_expression.csv', n_epochs=1000, save_weight=True, load_weight=False)
+train_stVAE_with_pseudo_data(spatial_data_file, pseudo_data_fold='./batch_data/', mu_expr_file='mu_gene_expression.csv', disper_file='disp_gene_expression.csv', n_epochs=1000, save_weight=True, load_weight=False)
 ```
 #### Description
   ```
@@ -140,7 +133,7 @@ get_trained_stVAE(mu_expr_file='mu_gene_expression.csv', weight_file = 'model_we
 
 ### Infer cell type proportions of spots
 ```python
-get_proportions(model, cell_type_list, spatial_data_file='stRNA.csv')
+get_proportions(model, cell_type_list, spatial_data_file)
 ```
 #### Description
   ```
@@ -176,22 +169,22 @@ sc_adata=anndata.read_h5ad(sc_file)
 
 ### Calulate the cell-type specific mean expression level of genes and gene-specific dispersion parameters
 ```python
-sc_mu_expr, sc_disp_expr, scRNA_data, scRNA_label, stRNA_data = get_cell_type_profile(sc_adata, st_adata)
+get_cell_type_profile(sc_adata, st_adata)
 ```
 
 ### Train stVAE with spatial transcriptomics
 ```python
-model, cell_type_list = train_stVAE()
+model, cell_type_list = train_stVAE(st_adata)
 ```
 
 ### Train stVAE with pseudo spots and spatial transcriptomics (option)
 ```python
 generate_train_valid_batches()
-model, cell_type_list = train_stVAE_with_pseudo_data()
+model, cell_type_list = train_stVAE_with_pseudo_data(st_adata)
 ```
 
 ### Get inferred cell type proportions
 ```python
-result = get_proportions(model, cell_type_list)
+result = get_proportions(model, cell_type_list,st_adata)
 result.to_csv('result.csv')
 ```
