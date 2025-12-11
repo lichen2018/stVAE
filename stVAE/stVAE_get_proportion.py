@@ -535,5 +535,5 @@ def get_proportions(model, cell_type_list, spatial_data_file):
                 result = tmp_pred_ys
             else:
                 result = np.concatenate((result, tmp_pred_ys), axis=0)
-    result = pd.DataFrame(data=result, columns=cell_type_list, index=list(st_data_df.index)) 
+    result = pd.DataFrame(data=result, columns=cell_type_list, index=list(spatial_data_file.obs_names)) 
     return result
