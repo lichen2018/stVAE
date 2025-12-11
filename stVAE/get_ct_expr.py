@@ -61,18 +61,7 @@ def get_cell_type_profile(sc_adata, st_adata, mu_expr_file='mu_gene_expression.c
         writer.writerow(sc_model.module.get_params()[1])
         f.close()
 
-    label_dict = {}
-    for subtype in filter_ct:
-        label_dict.update({subtype:[]})
-    for idx in range(len(list(sc_adata.obs['cell_type']))):
-        ct = list(sc_adata.obs['cell_type'])[idx]
-        for key in label_dict:
-            if key == ct:
-                label_dict[key].append(1)
-            else:
-                label_dict[key].append(0)
 
-    pd.DataFrame.from_dict(label_dict).to_csv(scRNA_label_file)
 
     #pd.DataFrame(data=sc_adata[:,common_gene_lst].X.A, columns=common_gene_lst, index=sc_adata.obs_names).to_csv(scRNA_data_file)
     #pd.DataFrame(data=st_adata[:,common_gene_lst].X.A, columns=common_gene_lst, index=st_adata.obs_names ).to_csv(spatial_data_file)
