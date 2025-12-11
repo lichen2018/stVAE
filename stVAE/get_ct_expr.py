@@ -60,7 +60,6 @@ def get_cell_type_profile(sc_adata, st_adata, mu_expr_file='mu_gene_expression.c
         writer = csv.writer(f, delimiter=',')
         writer.writerow(sc_model.module.get_params()[1])
         f.close()
-    sc_disp_expr = pd.DataFrame(data=sc_model.module.get_params()[1], columns=common_gene_lst)
 
     label_dict = {}
     for subtype in filter_ct:
