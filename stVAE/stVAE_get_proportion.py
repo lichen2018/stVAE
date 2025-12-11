@@ -168,7 +168,7 @@ def get_trained_stVAE(mu_expr_file='mu_gene_expression.csv', weight_file = 'mode
     return model, cell_type_list 
 
 
-def train_stVAE(spatial_data_file='stRNA.csv', mu_expr_file='mu_gene_expression.csv', disper_file='disp_gene_expression.csv', n_epochs=2000, save_weight=True, load_weight=False):
+def train_stVAE(spatial_data_file, mu_expr_file='mu_gene_expression.csv', disper_file='disp_gene_expression.csv', n_epochs=2000, save_weight=True, load_weight=False):
     """
     Train stVAE model.
     Parameters
@@ -192,8 +192,7 @@ def train_stVAE(spatial_data_file='stRNA.csv', mu_expr_file='mu_gene_expression.
     """
 
 
-    st_data_df = pd.read_csv(spatial_data_file, delimiter=',', header=0, index_col=0)
-    st_data = torch.tensor(st_data_df.values.astype(np.float32))
+    st_data = torch.tensor(spatial_data_file.X.toarray().astype(np.float32))
 
 
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
@@ -494,7 +493,7 @@ def train_stVAE_with_pseudo_data(spatial_data_file='stRNA.csv', pseudo_data_fold
 
 
 
-def get_proportions(model, cell_type_list, spatial_data_file='stRNA.csv'):
+def get_proportions(model, cell_type_list, spatial_data_file):
     """
     Infer cell type proportions of spots.
     Parameters
@@ -512,8 +511,8 @@ def get_proportions(model, cell_type_list, spatial_data_file='stRNA.csv'):
     """
     model.eval()
 
-    st_data_df = pd.read_csv(spatial_data_file, delimiter=',', header=0, index_col=0)
-    st_data = st_data_df.values.astype(np.float32)
+    #st_data_df = pd.read_csv(spatial_data_file, delimiter=',', header=0, index_col=0)
+    st_data = spatial_data_file.X.toarray().astype(np.float32)
 
     device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 
