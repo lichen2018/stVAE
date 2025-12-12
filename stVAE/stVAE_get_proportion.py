@@ -20,6 +20,7 @@ from torch.autograd import Variable
 from torch.distributions import NegativeBinomial
 from sparsemax import Sparsemax
 import os
+from tqdm import tqdm
 torch.manual_seed(0)
 
 
@@ -229,7 +230,7 @@ def train_stVAE(spatial_data_file, mu_expr_file='mu_gene_expression.csv', disper
         model.load_state_dict(torch.load(weights_file))
 
     optimizer = optim.SGD(model.parameters(), lr=0.01, momentum=0.9)
-    for epoch in range(n_epochs):  # loop over the dataset multiple times
+    for epoch in tqdm(range(n_epochs)):  # loop over the dataset multiple times
         running_loss = 0.0
         likelihood_loss = 0.0
         prop_loss = 0.0
