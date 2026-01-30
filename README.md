@@ -154,6 +154,7 @@ get_proportions(model, cell_type_list, spatial_data_file)
 All propcessed data could be downloaded from the shared link: https://drive.google.com/drive/folders/11djR7vxr6Y1VTpz2EVJKH3MvJNGm9VoR?usp=share_link  
 
 ## Example workflow
+For each cell type, identify 40~80 cell type-specific marker genes. Then store the cell-by-gene expression matrix (for single-cell RNA-seq data) and the spot-by-gene expression matrix (for spatial transcriptomic data) in separate Anndata objects, respectively. Cell type information should be stored in obs['cell_type'] of scRNA Anndata
 ### Import function and datasets
 ```python
 import anndata
